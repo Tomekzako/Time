@@ -31,17 +31,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function setDate() {
         const now = new Date();
 
-        const seconds = now.getSeconds();
-        const secondDegrees = ((seconds / 60) * 360);
-        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
-
-        const minutes = now.getMinutes();
-        const minutesDegrees = ((minutes / 60) * 360);
-        minHand.style.transform = `rotate(${minutesDegrees}deg)`;
-
         const hours = now.getHours();
-        const hoursDegrees = ((hours / 12) * 360);
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        
+        const hoursDegrees = (hours / 12) * 360;
+        const minutesDegrees = ((minutes / 60) * 360);
+        const secondDegrees = ((seconds / 60) * 360);
+        
         hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        minHand.style.transform = `rotate(${minutesDegrees}deg)`;
+        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+        
+        
         
          showTime.innerHTML = "Now it's: " + leadingZero(now.getHours()) + ":" + leadingZero(now.getMinutes()) + ":" + leadingZero(now.getSeconds());
 
@@ -49,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
         dayOfWeek.innerHTML = "Today is: " + weekday[now.getDay()];
         
     
-        if (hours > 0 && hours < 6) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + " Good night";
-        if (hours >= 6 && hours < 12) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + "Good morning";
-        if (hours >= 12 && hours < 18) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + " - " + "Good afternoon";
+        if (hours > 0 && hours < 6) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + " - " + " Good night";
+        if (hours >= 6 && hours < 12) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + " - " + "Good morning";
+        if (hours >= 12 && hours < 19) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + " - " + "Good afternoon";
         if (hours >= 19 && hours < 24) showDay.innerHTML = leadingZero(now.getDate()) + "." + leadingZero((now.getMonth() + 1)) + "." + leadingZero(now.getFullYear()) + " - " + "Good evening";
         
         
